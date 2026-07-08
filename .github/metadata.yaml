@@ -1,0 +1,9 @@
+# .github/metadata.yaml
+description: "SwiftUI-style layout views (HStack, VStack, Spacer, grid) for HTML, adapting the layout-primitives algebra to CSS coordinate space."
+topics:
+  - foundations
+  - css
+  - layout
+homepage: "https://swift-institute.org"
+readme:
+  family: E
