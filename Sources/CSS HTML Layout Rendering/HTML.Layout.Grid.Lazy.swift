@@ -8,6 +8,7 @@
 //
 
 public import Buffer_Linear_Primitive
+public import CSS_HTML_Rendering
 public import CSS_Standard
 public import Column_Primitives
 public import Dictionary_Ordered_Primitives
@@ -16,7 +17,6 @@ public import Hash_Indexed_Primitive
 public import Hash_Primitives
 public import Layout_Primitives
 public import Ownership_Shared_Primitive
-public import CSS_HTML_Rendering
 
 extension HTML.Layout.Grid {
     public struct Lazy<Content: HTML.View>: HTML.View {

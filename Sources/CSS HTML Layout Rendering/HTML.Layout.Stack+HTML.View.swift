@@ -9,11 +9,11 @@
 //
 
 import Axis_Primitives
-import Geometry_Primitives
-public import Layout_Primitives
-public import CSS_Standard
-public import HTML_Rendering
 import CSS_HTML_Rendering
+public import CSS_Standard
+import Geometry_Primitives
+public import HTML_Rendering
+public import Layout_Primitives
 
 // MARK: - Layout alias (sidesteps the `HTML.Layout` name shadow)
 

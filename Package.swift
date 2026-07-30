@@ -84,6 +84,13 @@ let package = Package(
                 .bufferLinearPrimitive,
             ]
         ),
+        .testTarget(
+            name: .cssHTMLLayoutRendering.tests,
+            dependencies: [
+                .cssHTMLLayoutRendering
+            ],
+            path: "Tests/CSS HTML Layout Rendering Tests"
+        ),
     ],
     swiftLanguageModes: [.v6]
 )
