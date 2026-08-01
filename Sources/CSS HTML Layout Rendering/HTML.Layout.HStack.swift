@@ -23,17 +23,20 @@ extension HTML.Layout {
             self.content = content()
         }
 
-        public var body: some HTML.View {
-            ContentDivision { content }
-                .css
-                .alignItems(AlignItems.stretch)
-                .verticalAlign(alignment)
-                .display(Display.flex)
-                .flexDirection(FlexDirection.row)
-                .maxHeight(MaxHeight.percentage(100))
-                .columnGap(ColumnGap.length(spacing == 0 ? .zero : spacing ?? 1.rem))
-        }
     }
 }
 
 extension HTML.Layout.HStack: Sendable where Content: Sendable {}
+
+extension HTML.Layout.HStack {
+    public var body: some HTML.View {
+        ContentDivision { content }
+            .css
+            .alignItems(AlignItems.stretch)
+            .verticalAlign(alignment)
+            .display(Display.flex)
+            .flexDirection(FlexDirection.row)
+            .maxHeight(MaxHeight.percentage(100))
+            .columnGap(ColumnGap.length(spacing == 0 ? .zero : spacing ?? 1.rem))
+    }
+}

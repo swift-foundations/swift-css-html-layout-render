@@ -20,19 +20,6 @@ public import Ownership_Shared_Primitive
 
 extension HTML.Layout.Grid {
     public struct Lazy<Content: HTML.View>: HTML.View {
-        /// Column configuration type parameterized by CSS Length
-        public typealias Columns = LayoutRaw<W3C_CSS_Values.Length, CSSSpace>.Grid<Content>.Lazy.Columns
-
-        /// The responsive column configuration: a value-semantic (copy-on-write)
-        /// insertion-ordered map from an optional media-query breakpoint (`nil` = the
-        /// default, no media query) to its `Columns`, on the `Shared` column.
-        public typealias Breakpoints = __DictionaryOrdered<
-            Ownership.Shared<
-                Hash.Entry<CSS_Standard.Media?, Columns>,
-                Hash.Indexed<Column_Primitives.Column.Heap<Hash.Entry<CSS_Standard.Media?, Columns>>>
-            >
-        >
-
         public let columns: Breakpoints
         public let content: Content
         public let horizontalSpacing: W3C_CSS_Multicolumn.ColumnGap?
@@ -65,29 +52,45 @@ extension HTML.Layout.Grid {
             self.content = content()
         }
 
-        public var body: some HTML.View {
-            let colValue: Columns =
-                if !columns.isEmpty {
-                    columns.value(at: .zero)
-                } else {
-                    .count(1)
-                }
-            let columnGap = horizontalSpacing == .zero ? .zero : horizontalSpacing
-            let rowGap = verticalSpacing == .zero ? .zero : verticalSpacing
-            let gridCols = colValue.cssGridTemplateColumns
-
-            ContentDivision { content }
-                .css
-                .width(.percent(100))
-                .display(.grid)
-                .inlineStyle("grid-template-columns", gridCols)
-                .columnGap(columnGap)
-                .rowGap(rowGap)
-        }
     }
 }
 
 extension HTML.Layout.Grid.Lazy: Sendable where Content: Sendable {}
+
+extension HTML.Layout.Grid.Lazy {
+    /// Column configuration type parameterized by CSS Length
+    public typealias Columns = LayoutRaw<W3C_CSS_Values.Length, CSSSpace>.Grid<Content>.Lazy.Columns
+
+    /// The responsive column configuration: a value-semantic (copy-on-write)
+    /// insertion-ordered map from an optional media-query breakpoint (`nil` = the
+    /// default, no media query) to its `Columns`, on the `Shared` column.
+    public typealias Breakpoints = __DictionaryOrdered<
+        Ownership.Shared<
+            Hash.Entry<CSS_Standard.Media?, Columns>,
+            Hash.Indexed<Column_Primitives.Column.Heap<Hash.Entry<CSS_Standard.Media?, Columns>>>
+        >
+    >
+
+    public var body: some HTML.View {
+        let colValue: Columns =
+            if !columns.isEmpty {
+                columns.value(at: .zero)
+            } else {
+                .count(1)
+            }
+        let columnGap = horizontalSpacing == .zero ? .zero : horizontalSpacing
+        let rowGap = verticalSpacing == .zero ? .zero : verticalSpacing
+        let gridCols = colValue.cssGridTemplateColumns
+
+        return ContentDivision { content }
+            .css
+            .width(.percent(100))
+            .display(.grid)
+            .inlineStyle("grid-template-columns", gridCols)
+            .columnGap(columnGap)
+            .rowGap(rowGap)
+    }
+}
 
 // MARK: - CSS Rendering for Layout.Grid.Lazy.Columns
 

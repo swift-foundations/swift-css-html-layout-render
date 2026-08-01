@@ -10,13 +10,15 @@ public import HTML_Rendering
 extension HTML.Layout {
     public struct Spacer: HTML.View {
         public init() {}
-
-        public var body: some HTML.View {
-            ContentDivision {}
-                .css
-                .flexGrow(1)
-        }
     }
 }
 
 extension HTML.Layout.Spacer: Sendable {}
+
+extension HTML.Layout.Spacer {
+    public var body: some HTML.View {
+        ContentDivision {}
+            .css
+            .flexGrow(1)
+    }
+}

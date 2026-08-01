@@ -23,18 +23,21 @@ extension HTML.Layout {
             self.content = content()
         }
 
-        public var body: some HTML.View {
-            ContentDivision {
-                content
-            }
-            .css
-            .alignItems(alignment)
-            .display(Display.flex)
-            .flexDirection(FlexDirection.column)
-            .maxWidth(MaxWidth.percentage(100))
-            .rowGap(RowGap.length(spacing == .zero ? .zero : (spacing ?? 1.rem)))
-        }
     }
 }
 
 extension HTML.Layout.VStack: Sendable where Content: Sendable {}
+
+extension HTML.Layout.VStack {
+    public var body: some HTML.View {
+        ContentDivision {
+            content
+        }
+        .css
+        .alignItems(alignment)
+        .display(Display.flex)
+        .flexDirection(FlexDirection.column)
+        .maxWidth(MaxWidth.percentage(100))
+        .rowGap(RowGap.length(spacing == .zero ? .zero : (spacing ?? 1.rem)))
+    }
+}
