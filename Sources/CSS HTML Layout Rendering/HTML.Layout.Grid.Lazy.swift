@@ -100,10 +100,13 @@ extension Layout.Grid.Lazy.Columns where Scalar == W3C_CSS_Values.Length {
         switch self {
         case .count(let n):
             return "repeat(\(n), minmax(0, 1fr))"
+
         case .fractions(let values):
             return values.map { "minmax(0, \($0))" }.joined(separator: " ")
+
         case .autoFill(let minWidth):
             return "repeat(auto-fill, minmax(\(minWidth), 1fr))"
+
         case .autoFit(let minWidth):
             return "repeat(auto-fit, minmax(\(minWidth), 1fr))"
         }
