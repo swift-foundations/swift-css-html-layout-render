@@ -17,6 +17,7 @@ public import Hash_Indexed_Primitive
 public import Hash_Primitives
 public import Layout_Primitives
 public import Ownership_Shared_Primitive
+import WHATWG_HTML_Grouping
 
 extension HTML.Layout.Grid {
     public struct Lazy<Content: HTML.View>: HTML.View {
@@ -82,7 +83,7 @@ extension HTML.Layout.Grid.Lazy {
         let rowGap = verticalSpacing == .zero ? .zero : verticalSpacing
         let gridCols = colValue.cssGridTemplateColumns
 
-        return ContentDivision { content }
+        return HTML.ContentDivision.Element { content }
             .css
             .width(.percent(100))
             .display(.grid)

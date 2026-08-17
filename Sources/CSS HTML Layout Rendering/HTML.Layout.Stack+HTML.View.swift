@@ -14,6 +14,7 @@ public import CSS_Standard
 import Geometry_Primitives
 public import HTML_Rendering
 public import Layout_Primitives
+import WHATWG_HTML_Grouping
 
 // MARK: - Layout alias (sidesteps the `HTML.Layout` name shadow)
 
@@ -32,7 +33,7 @@ where Content: HTML.View {
     public var body: some HTML.View {
         if axis == .primary {
             // horizontal
-            ContentDivision { content }
+            HTML.ContentDivision.Element { content }
                 .css
                 .alignItems(alignment.cssAlignItems)
                 .display(Display.flex)
@@ -40,7 +41,7 @@ where Content: HTML.View {
                 .columnGap(ColumnGap.length(spacing.value))
         } else {
             // vertical
-            ContentDivision { content }
+            HTML.ContentDivision.Element { content }
                 .css
                 .alignItems(alignment.cssAlignItems)
                 .display(Display.flex)

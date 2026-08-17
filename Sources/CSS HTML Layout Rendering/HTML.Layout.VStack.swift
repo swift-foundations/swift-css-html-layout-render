@@ -6,6 +6,7 @@
 import CSS_HTML_Rendering
 public import CSS_Standard
 public import HTML_Rendering
+import WHATWG_HTML_Grouping
 
 extension HTML.Layout {
     public struct VStack<Content: HTML.View>: HTML.View {
@@ -30,7 +31,7 @@ extension HTML.Layout.VStack: Sendable where Content: Sendable {}
 
 extension HTML.Layout.VStack {
     public var body: some HTML.View {
-        ContentDivision {
+        HTML.ContentDivision.Element {
             content
         }
         .css
