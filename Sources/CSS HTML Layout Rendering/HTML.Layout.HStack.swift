@@ -6,6 +6,7 @@
 import CSS_HTML_Rendering
 public import CSS_Standard
 public import HTML_Rendering
+import WHATWG_HTML_Grouping
 
 extension HTML.Layout {
     public struct HStack<Content: HTML.View>: HTML.View {
@@ -30,7 +31,7 @@ extension HTML.Layout.HStack: Sendable where Content: Sendable {}
 
 extension HTML.Layout.HStack {
     public var body: some HTML.View {
-        ContentDivision { content }
+        HTML.ContentDivision.Element { content }
             .css
             .alignItems(AlignItems.stretch)
             .verticalAlign(alignment)

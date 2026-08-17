@@ -24,6 +24,9 @@ extension Target.Dependency {
     static var htmlRendering: Self {
         .product(name: "HTML Rendering", package: "swift-html-render")
     }
+    static var whatwgHTMLGrouping: Self {
+        .product(name: "WHATWG HTML Grouping", package: "swift-whatwg-html")
+    }
     static var sharedPrimitive: Self {
         .product(name: "Ownership Shared Primitive", package: "swift-ownership-shared-primitives")
     }
@@ -47,11 +50,11 @@ extension Target.Dependency {
 let package = Package(
     name: "swift-css-html-layout-render",
     platforms: [
-        .macOS(.v26),
-        .iOS(.v26),
-        .tvOS(.v26),
-        .watchOS(.v26),
-        .visionOS(.v26),
+        .macOS("27"),
+        .iOS("27"),
+        .tvOS("27"),
+        .watchOS("27"),
+        .visionOS("27"),
     ],
     products: [
         .library(name: .cssHTMLLayoutRendering, targets: [.cssHTMLLayoutRendering]),
@@ -61,6 +64,7 @@ let package = Package(
         .package(url: "https://github.com/swift-foundations/swift-css-html-render.git", branch: "main"),
         .package(url: "https://github.com/swift-standards/swift-css-standard.git", branch: "main"),
         .package(url: "https://github.com/swift-foundations/swift-html-render.git", branch: "main"),
+        .package(url: "https://github.com/swift-whatwg/swift-whatwg-html.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-dictionary-ordered-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-ownership-shared-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-hash-table-primitives.git", branch: "main"),
@@ -76,6 +80,7 @@ let package = Package(
                 .cssHTMLRendering,
                 .cssStandard,
                 .htmlRendering,
+                .whatwgHTMLGrouping,
                 .dictionaryOrderedPrimitives,
                 .sharedPrimitive,
                 .hashIndexedPrimitive,
