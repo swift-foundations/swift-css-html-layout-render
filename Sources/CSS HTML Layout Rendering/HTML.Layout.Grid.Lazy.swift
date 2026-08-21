@@ -12,9 +12,9 @@ public import CSS_HTML_Rendering
 public import CSS_Standard
 public import Column_Primitives
 public import Dictionary_Ordered_Primitives
-public import HTML_Rendering
+import HTML_Rendering
 public import Hash_Indexed_Primitive
-public import Hash_Primitives
+import Hash_Primitives
 public import Layout_Primitives
 public import Ownership_Shared_Primitive
 import WHATWG_HTML_Grouping
