@@ -1,8 +1,3 @@
-//
-//  CSS.HTML.Layout.Rendering.Tests.swift
-//  swift-css-html-layout-render
-//
-
 import CSS_HTML_Layout_Rendering
 import HTML_Rendering
 import Testing

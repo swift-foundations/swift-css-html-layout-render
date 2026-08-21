@@ -1,12 +1,3 @@
-//
-//  HTML.Layout.Grid.Lazy.swift
-//  swift-css-html-layout-render
-//
-//  The responsive column-template grid (formerly the top-level `LazyVGrid`),
-//  re-nested under `HTML.Layout.Grid.Lazy` to mirror the L1 `Layout.Grid.Lazy`
-//  shape. Reuses the L1 `Columns` sizing enum verbatim.
-//
-
 public import Buffer_Linear_Primitive
 public import CSS_HTML_Rendering
 public import CSS_Standard
@@ -38,7 +29,6 @@ extension HTML.Layout.Grid {
             self.content = content()
         }
 
-        /// Convenience initializer with single column configuration (no media queries)
         public init(
             columns: Columns,
             horizontalSpacing: W3C_CSS_Multicolumn.ColumnGap? = nil,
@@ -59,12 +49,9 @@ extension HTML.Layout.Grid {
 extension HTML.Layout.Grid.Lazy: Sendable where Content: Sendable {}
 
 extension HTML.Layout.Grid.Lazy {
-    /// Column configuration type parameterized by CSS Length
+
     public typealias Columns = LayoutRaw<W3C_CSS_Values.Length, CSSSpace>.Grid<Content>.Lazy.Columns
 
-    /// The responsive column configuration: a value-semantic (copy-on-write)
-    /// insertion-ordered map from an optional media-query breakpoint (`nil` = the
-    /// default, no media query) to its `Columns`, on the `Shared` column.
     public typealias Breakpoints = __DictionaryOrdered<
         Ownership.Shared<
             Hash.Entry<CSS_Standard.Media?, Columns>,
@@ -93,10 +80,8 @@ extension HTML.Layout.Grid.Lazy {
     }
 }
 
-// MARK: - CSS Rendering for Layout.Grid.Lazy.Columns
-
 extension Layout.Grid.Lazy.Columns where Scalar == W3C_CSS_Values.Length {
-    /// Converts the column configuration to a CSS grid-template-columns value
+
     var cssGridTemplateColumns: String {
         switch self {
         case .count(let n):

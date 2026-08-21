@@ -1,8 +1,3 @@
-//
-//  HTML.Layout.Spacer.swift
-//  swift-css-html-layout-render
-//
-
 import CSS_HTML_Rendering
 import CSS_Standard
 public import HTML_Rendering

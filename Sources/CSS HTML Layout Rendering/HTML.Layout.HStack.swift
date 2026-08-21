@@ -1,8 +1,3 @@
-//
-//  HTML.Layout.HStack.swift
-//  swift-css-html-layout-render
-//
-
 import CSS_HTML_Rendering
 public import CSS_Standard
 public import HTML_Rendering
